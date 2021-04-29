@@ -18,7 +18,7 @@ export class ContentComponent implements OnInit {
   public ratingFilter: any = '';
   public contentLanguageFilter: any = '';
   public contentLevelFilter: any = '';
-  filterAppliedText: any;
+  public filterAppliedText: any;
   constructor(
     public router: Router,
     private _auth: AuthService,
@@ -102,6 +102,7 @@ export class ContentComponent implements OnInit {
     if (this.contentLanguageFilter) filterData.content_lang = this.contentLanguageFilter;
     if (this.contentLevelFilter) filterData.content_level = Number(this.contentLevelFilter);
     filterData.publisher_id = this.getParamsForContent.userId;
+    filterData.category_id = this.getParamsForContent.categoryId;
     const filter = {
       filter: filterData
     }
@@ -133,14 +134,6 @@ export class ContentComponent implements OnInit {
     }, 2000);
   }
 
-  //   {
-  //     "userId": "1",
-  //     "content_id": 3,
-  //     "update_content": {
-  //         "content_title": "Node Suberb backkend",
-  //         "ratings": 4
-  //     }
-  // }
   addToFavorite(addToFavorite, contentId) {
     let updateFavorite = !addToFavorite;
     const updateContent = {
