@@ -1,0 +1,88 @@
+<div class="container">
+  <div *ngIf="filterAppliedText" class="alert alert-warning" role="alert">
+    {{filterAppliedText}}
+  </div>
+  <button *ngIf="isContentFound" (click)='showFilterToogle()' class="btn-warning btn mb-3"> <i class="fa fa-filter"></i>
+    Show
+    Filter</button><br>
+  <div *ngIf="isContentFound" class="form-group">
+    <label> Search for content by Title, Description</label>
+    <input type="text" (input)="cancelSearch()" [(ngModel)]="searchItem" class="form-control" id=""> <button
+      (click)="searchContent()" class="btn mt-2 btn-primary">Search</button>
+  </div>
+  <button class="btn btn-danger " (click)="goToAddContent()">Add Content</button>
+  <div *ngIf="!isContentFound">
+    <h1>No Contet Added Yet</h1>
+  </div>
+  <div *ngIf="isContentFound" class="d-flex flex-wrap">
+    <div class="p-2" *ngFor="let content of contentDetails">
+      <div class="card" style="width: 35rem; height: 45rem;">
+        <img
+          src="{{content.content_img ? content.content_img : 'https://www.mycplus.com/mycplus/wp-content/uploads/2009/02/programming-languages.jpg'}}"
+          height="170" class="card-img-top" alt="content images">
+        <i (click)='addToFavorite(content.add_to_favorite, content.content_id)' class="fa fa-heart fa-2x text-right p-2"
+          style="cursor: pointer;" [ngStyle]="{color:  content.add_to_favorite ? 'red' : 'grey' }"></i>
+        <div class="card-body">
+          <h5 class="card-title"><b>Content Tiltle: </b>{{content.content_title}}</h5>
+          <p class="card-text"> <b>Description:</b> {{content.content_description}}</p>
+          <p class="card-text"> <b>Ratings:</b> {{content.ratings}}</p>
+          <p class="card-text"> <b>Content Level:</b> <span *ngIf="content.content_level == 0">Beginner</span><span
+              *ngIf="content.content_level == 1">Intermediate</span><span
+              *ngIf="content.content_level == 2">Difficult</span></p>
+          <p class="card-text"> <b>Content Created:</b> {{content.createdAt | date}}</p>
+          <p class="card-text" *ngIf="content.content_lang === 'en'"> <b>Content Language:</b>English</p>
+          <p class="card-text" *ngIf="content.content_lang === 'hd'"> <b>Content Language:</b>Hindi</p>
+          <p class="card-text" *ngIf="content.content_lang === 'sp'"> <b>Content Language:</b>Spanish</p>
+          <p class="card-text" *ngIf="content.content_lang === 'po'"> <b>Content Language:</b>Portugese</p>
+          <p class="card-text" *ngIf="content.content_lang === 'it'"> <b>Content Language:</b>Italian</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showFilter" id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close  text-right" (click)="showFilterToogle()">&times;</span>
+    <h3 class="text-center">Filter By Ratings, Content Language, Content Level</h3>
+    <div>
+      <div class="form-group">
+        <label for="my-select">Ratings</label>
+        <select [(ngModel)]="ratingFilter" id="my-select" class="form-control">
+          <option value="" disabled selected>Select Rating</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="my-select">Content Language</label>
+        <select [(ngModel)]="contentLanguageFilter" id="my-select" class="form-control">
+          <option value="" disabled selected>Select Content Language</option>
+          <option value="en">English</option>
+          <option value="hd">Hindi</option>
+          <option value="sp">Spanish</option>
+          <option value="po">Portugese</option>
+          <option value="it">Italian</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="my-select">Content Level</label>
+        <select [(ngModel)]="contentLevelFilter" id="my-select" class="form-control">
+          <option value="" disabled selected>Select Content level</option>
+          <option value="0">Beginner</option>
+          <option value="1">Intermediate</option>
+          <option value="2">Difficult</option>
+        </select>
+      </div>
+      <div class="text-center">
+        <button (click)="applyFilter()" class="btn btn-primary">Filter</button>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="text-right">
+    <button class="btn btn-success mr-4" (click)="goToAddCategory()">Add Category <i class="fa fa-plus"></i> </button>
+  </div>
+  <div *ngIf="!categoryFound">
+    <h1>No Category Added Yet</h1>
+  </div>
+  <div *ngIf="categoryFound" class="d-flex flex-wrap">
+    <div class="p-2" *ngFor="let category of categoryDetails">
+      <div class="card" style="width: 80vw; height: 12rem;">
+        <div class="card-body">
+          <h5 class="card-title"><b>Category Name: </b>{{category.categoryName}}</h5>
+          <p class="card-text"> <b>Description:</b> {{category.description}}</p>
+          <p class="card-text"> <b>Type:</b> {{category.type}}</p>
+        </div>
+      </div>
+      <div class="card-footer border">
+        <a class="btn btn-primary text-white" (click)="goToCategory(category.id, category.userId)">Go To Contents</a> <i
+          title="Update Category" style="cursor: pointer;" class="fa ml-3 fa-2x float-right text-success fa-pencil "
+          (click)='editCategory(category)'></i> <i (click)="deleteCategory(category.id)" style="cursor: pointer;"
+          title="Delete Category" class="fa ml-3 text-danger float-right fa-2x fa-trash "></i>
+      </div>
+    </div>
+  </div>
+</div>

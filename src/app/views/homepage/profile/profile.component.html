@@ -1,0 +1,12 @@
+<div class="contaier">
+    <h1 class="text-center">Profile Details</h1>
+    <div class="card">
+        <img [src]=profileData.data.profile_image alt="John Jones" style="width:100%">
+        <h1>{{profileData.data.firstname}} {{profileData.data.lastname}}</h1>
+        <p class="title">Email: {{profileData.data.email}} <i *ngIf="!profileData.data.email_verified"
+                class="fa fa-check-circle" aria-hidden="true"></i><i *ngIf="profileData.data.email_verified"
+                class="fa fa-check-circle text-sucess" aria-hidden="true"></i></p>
+        <p *ngIf="profileData.data.username" class="title">Username: {{profileData.data.username}}</p>
+        <p><button *ngIf="profileData.data.contact">Contact: {{profileData.data.contact}}</button></p>
+    </div>
+</div>

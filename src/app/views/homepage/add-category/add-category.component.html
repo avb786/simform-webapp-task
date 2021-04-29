@@ -1,0 +1,38 @@
+<div class="container">
+    <h1 *ngIf="!isUpdate" class="text-muted text-center border p-2">ADD Category Details</h1>
+    <h1 *ngIf="isUpdate" class="text-success text-center border p-2">Update Category Details</h1>
+    <form [formGroup]="addCategoryForm">
+        <div class="form-row">
+            <div class="col">
+                <input type="text" formControlName="categoryName" class="form-control" placeholder="Category Name">
+                <div *ngIf="submitted && f.categoryName.errors" class="text-danger">
+                    <div *ngIf="f.categoryName.errors.required">Please Enter Category Name</div>
+                </div>
+            </div>
+            <div class="col">
+                <select formControlName="type" class="form-control">
+                    <option value="" selected disabled>Choose Category Type...</option>
+                    <option value="Backend">Backend</option>
+                    <option value="Frontend">Frontend</option>
+                    <option value="FullStack">Full Stack</option>
+                    <option value="DataScience">Data Science</option>
+                    <option value="DataAnalyst">Data Analyst</option>
+                    <option value="QA">Quality Analyst</option>
+                </select>
+                <div *ngIf="submitted && f.type.errors" class="text-danger">
+                    <div *ngIf="f.type.errors.required">Please Select Type</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row mt-2">
+            <div class="col">
+                <textarea formControlName="description" placeholder="Add Description...." id="cat_des" cols="150"
+                    rows="10"></textarea>
+            </div>
+        </div>
+        <button *ngIf="!isUpdate" class="btn btn-block btn-danger" (click)="addCategory(addCategoryForm.value)">Add
+            Category</button>
+        <button *ngIf="isUpdate" class="btn btn-block btn-primary"
+            (click)="updateCategory(addCategoryForm.value)">Update Category</button>
+    </form>
+</div>
