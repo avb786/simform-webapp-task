@@ -10,7 +10,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 })
 export class AuthService {
   public tokenSubject = new Subject();
-  public userDetails:any;
+  public userDetails: any;
   public isLoader = false; // Loader Access
   public isAuthLogin = new BehaviorSubject({ isAuth: localStorage.getItem('userData') ? true : false });
   constructor(
@@ -19,12 +19,12 @@ export class AuthService {
   ) {
   }
 
-getUserDetails() {
-  return new Promise((resolve, reject) => {
+  getUserDetails() {
+    return new Promise((resolve, reject) => {
       return resolve(JSON.parse(localStorage.getItem('userData')))
-  })
-  
-}
+    })
+
+  }
   /**
    * 
    * @param body Register data

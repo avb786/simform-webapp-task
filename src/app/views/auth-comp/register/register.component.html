@@ -1,5 +1,5 @@
 <div class="container" id="container">
-  
+
 	<div class="form-container sign-up-container">
 		<form action="#">
 			<h1>Create Account</h1>
@@ -16,45 +16,46 @@
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
-        <form [formGroup]="registerForm">
-            <h3>Sign Up</h3>
-            <img height="70" width="70" class="border" [src]="imageUrl" /> 
-            <i class=" p-1 fa fa-upload text-primary fa-2x" title="upload image" (click)="file.click()" aria-hidden="true"></i>
-            <input type="file" (change)="selectFile($event)" style="display: none" class="form-control" #file />
-            <button class="mt-1" (click)="googleLogin()">  <i class="fa fa-google fa-fw"></i> Login with Google</button>
+		<form [formGroup]="registerForm">
+			<h3>Sign Up</h3>
+			<img height="70" width="70" class="border" [src]="imageUrl" />
+			<i class=" p-1 fa fa-upload text-primary fa-2x" title="upload image" (click)="file.click()"
+				aria-hidden="true"></i>
+			<input type="file" (change)="selectFile($event)" style="display: none" class="form-control" #file />
+			<button class="mt-1" (click)="googleLogin()"> <i class="fa fa-google fa-fw"></i> Login with Google</button>
 			<input type="text" formControlName="firstname" placeholder="First Name" />
-            <div *ngIf="submitted && f.firstname.errors" class="text-danger">
-                <div *ngIf="f.firstname.errors.required">Please Enter First name</div>
-              </div>
+			<div *ngIf="submitted && f.firstname.errors" class="text-danger">
+				<div *ngIf="f.firstname.errors.required">Please Enter First name</div>
+			</div>
 			<input type="text" formControlName="lastname" placeholder="Last name" />
-            <div *ngIf="submitted && f.lastname.errors" class="text-danger">
-                <div *ngIf="f.lastname.errors.required">Please Enter Last name</div>
-              </div>
+			<div *ngIf="submitted && f.lastname.errors" class="text-danger">
+				<div *ngIf="f.lastname.errors.required">Please Enter Last name</div>
+			</div>
 			<input type="text" formControlName="username" placeholder="Username" />
-            <div *ngIf="submitted && f.username.errors" class="text-danger">
-                <div *ngIf="f.username.errors.required">Please Enter Username</div>
-              </div>
+			<div *ngIf="submitted && f.username.errors" class="text-danger">
+				<div *ngIf="f.username.errors.required">Please Enter Username</div>
+			</div>
 			<input type="email" formControlName="email" placeholder="Email" />
-            <div *ngIf="submitted && f.email.errors" class="text-danger">
-                <div *ngIf="f.email.errors.required">Please Enter Email</div>
-                <div *ngIf="f.email.errors.email">Please Enter Correct Email.</div>
-              </div>
+			<div *ngIf="submitted && f.email.errors" class="text-danger">
+				<div *ngIf="f.email.errors.required">Please Enter Email</div>
+				<div *ngIf="f.email.errors.email">Please Enter Correct Email.</div>
+			</div>
 			<input type="text" formControlName="contact" placeholder="contact" />
-            <div class="row">
-                <div class="col-6">
-                    Male <input type="radio" formControlName="gender" value="male" placeholder="Male" /> 
-                </div>
-                <div class="col-6">
-                    Female <input type="radio" formControlName="gender" value="female" placeholder="Female" />
-                </div>
-            </div> 
-            <div *ngIf="submitted && f.gender.errors" class="text-danger">
-                <div *ngIf="f.gender.errors.required">Please Select Gender</div>
-              </div>
+			<div class="row">
+				<div class="col-6">
+					Male <input type="radio" formControlName="gender" value="male" placeholder="Male" />
+				</div>
+				<div class="col-6">
+					Female <input type="radio" formControlName="gender" value="female" placeholder="Female" />
+				</div>
+			</div>
+			<div *ngIf="submitted && f.gender.errors" class="text-danger">
+				<div *ngIf="f.gender.errors.required">Please Select Gender</div>
+			</div>
 			<input type="password" formControlName="password" placeholder="Password" />
-            <div *ngIf="submitted && f.password.errors" class="text-danger">
-                <div *ngIf="f.password.errors.required">Please Enter Password</div>
-              </div>
+			<div *ngIf="submitted && f.password.errors" class="text-danger">
+				<div *ngIf="f.password.errors.required">Please Enter Password</div>
+			</div>
 			<button (click)="register(registerForm.value)">Sign Up</button>
 		</form>
 	</div>
@@ -73,4 +74,3 @@
 		</div>
 	</div>
 </div>
-
