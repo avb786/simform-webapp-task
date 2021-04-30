@@ -10,6 +10,7 @@ To Run the following Project , follow below steps in your console
  1.  npm i
  2. ng serve
  3. open the browser and write this url http://localhost:4200
+ 4. Make Sure your Node Service is also running https://github.com/avb786/simform-service--task
 
 
 ## Instructions
