@@ -12,16 +12,14 @@ export class AuthenticateGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Promise<boolean> {
-      return new Promise((resolve,reject) => {
-        console.log(localStorage);
-        
-        if (localStorage.length && localStorage.getItem('userData')) {
-          return resolve(true);
-        } else {
-          this.route.navigate(['/login']);
-          return resolve(false);
-        }
-      })
+    return new Promise((resolve, reject) => {
+      if (localStorage.length && localStorage.getItem('userData')) {
+        return resolve(true);
+      } else {
+        this.route.navigate(['/login']);
+        return resolve(false);
+      }
+    })
 
 
   }

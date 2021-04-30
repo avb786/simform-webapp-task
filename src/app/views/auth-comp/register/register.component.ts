@@ -94,7 +94,6 @@ export class RegisterComponent implements OnInit {
    * @param event - File Event with image 
    */
   async selectFile(event) {
-    console.log("===", event.target.files);
     this.files = event.target.files;
     this.imageUrl = '';
     for (let i = 0; i < this.files.length; i++) {
@@ -109,7 +108,6 @@ export class RegisterComponent implements OnInit {
         } else {
           let type = this.files[i].name.split('.');
           obj[APP_CONSTANTS.TYPE] = type[type.length - 1]
-          console.log("type", type);
         }
         this.imageUrl = obj.url;
         this.imageUrlName = obj.imageName;

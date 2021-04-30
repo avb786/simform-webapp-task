@@ -28,7 +28,6 @@ export class ContentComponent implements OnInit {
 
   ngOnInit(): void {
     this.activateRoute.queryParams.subscribe(params => {
-      console.log('Params', params);
       this.getParamsForContent = params;
       if (params.categoryId && params.userId) {
         this.fetchContent(params.categoryId, params.userId);

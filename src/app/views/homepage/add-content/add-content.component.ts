@@ -49,7 +49,6 @@ export class AddContentComponent implements OnInit {
 
   getQueryParams() {
     this.activateRoute.queryParams.subscribe(params => {
-      console.log('Params', params);
       if (params.categoryId && params.publisherId) {
         this.getParamsForContent = params;
       } else {
@@ -59,7 +58,6 @@ export class AddContentComponent implements OnInit {
   }
 
   async selectFile(event) {
-    console.log("===", event.target.files);
     this.files = event.target.files;
     this.imageUrl = '';
     for (let i = 0; i < this.files.length; i++) {
@@ -74,7 +72,6 @@ export class AddContentComponent implements OnInit {
         } else {
           let type = this.files[i].name.split('.');
           obj[APP_CONSTANTS.TYPE] = type[type.length - 1]
-          console.log("type", type);
         }
         this.imageUrl = obj.url;
         this.imageUrlName = obj.imageName;

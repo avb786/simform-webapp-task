@@ -31,7 +31,6 @@ export class CategoryComponent implements OnInit {
   getAllCategoryByUserId(userId) {
     this._category.getAllCategoryByUserId(userId).subscribe((res: any) => {
       this.categoryDetails = res.data;
-      console.log('Res', res);
       this.categoryFound = true;
     }, err => {
       this.categoryFound = false;
